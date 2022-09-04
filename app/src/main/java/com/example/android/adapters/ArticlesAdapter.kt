@@ -3,9 +3,11 @@ package com.example.android.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.android.R
 import com.example.android.data.dto.ArticlesResultDto
 
@@ -32,7 +34,7 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>(
         private var article: ArticlesResultDto? = null
 
         private val titleText: TextView = itemView.findViewById(R.id.articleTitleTextView)
-
+        private val articleImage: ImageView = itemView.findViewById(R.id.article_image)
 
         init {
             itemView.setOnClickListener {
@@ -59,6 +61,13 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>(
         fun bind(mArticle: ArticlesResultDto) {
             article = mArticle
             titleText.text = article!!.title
+
+            val articleImageUrl = article!!.media?.get(0)?.mediaMetadata?.get(2)?.url
+
+            Glide.with(itemView.context)
+                .load(articleImageUrl)
+                .skipMemoryCache(true)
+                .into(articleImage)
 
         }
     }

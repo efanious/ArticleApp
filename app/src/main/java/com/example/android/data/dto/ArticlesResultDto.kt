@@ -6,6 +6,7 @@ data class ArticlesResultDto(
     val id: Double?,
     val asset_id: Double?,
     val source: String?,
-    val title: String?
+    val title: String?,
+    val media: List<MediaDto>?
 
 )

@@ -1,5 +1,6 @@
 package com.example.android.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.android.R
 import com.example.android.data.dto.ArticlesResultDto
+import com.example.android.presentation.article_detail.ArticleDetailActivity
 
 class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>() {
 
@@ -46,15 +48,15 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>(
 
         private fun onClick(articleClicked: ArticlesResultDto) {
 
-            Toast.makeText(
-                itemView.context,
-                "${articleClicked.title} clicked!!! ",
-                Toast.LENGTH_SHORT
-            ).show()
+//            Toast.makeText(
+//                itemView.context,
+//                "${articleClicked.title} clicked!!! ",
+//                Toast.LENGTH_SHORT
+//            ).show()
 
-//            val intent = Intent(itemView.context, ArticleDetailActivity::class.java)
-//            intent.putExtra("Article", articleClicked)
-//            itemView.context.startActivity(intent)
+            val intent = Intent(itemView.context, ArticleDetailActivity::class.java)
+            intent.putExtra("Article", articleClicked.toArticlesResult())
+            itemView.context.startActivity(intent)
 
         }
 

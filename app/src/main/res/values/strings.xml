@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ArticleApp</string>
+    <string name="go_to_article">Go to Article</string>
 </resources>

@@ -5,5 +5,7 @@ data class ArticlesResultDto(
     val url: String?,
     val id: Double?,
     val asset_id: Double?,
-    val source: String?
+    val source: String?,
+    val title: String?
+
 )

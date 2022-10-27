@@ -26,12 +26,13 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>(
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
+        holder.setListeners()
     }
 
     override fun getItemCount() = data.size
 
     class ArticleViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
+        RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
         private var article: ArticlesResultDto? = null
 
@@ -72,6 +73,26 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>(
                 .into(articleImage)
 
         }
+
+        fun setListeners() {
+            titleText.setOnClickListener(this@ArticleViewHolder)
+        }
+
+        override fun onClick(v: View?) {
+            when (v!!.id) {
+                R.id.titleTextView -> doSomething()
+            }
+        }
+
+        private fun doSomething() {
+            Toast.makeText(
+                itemView.context,
+                "Title clicked!!! ",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+
     }
 
 

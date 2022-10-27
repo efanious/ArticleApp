@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         viewModel.response.observe(this) { result ->
             when (result) {
                 is Resource.Success -> {
-                    //Toast.makeText(this, "num_results: ${result.data?.num_results}", Toast.LENGTH_SHORT).show()
                     popularArticlesAdapter.data = result.data?.results!!
                     articlesRView.adapter = popularArticlesAdapter
                 }
